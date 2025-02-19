@@ -1,0 +1,40 @@
+@import "tailwindcss";
+
+
+@font-face {
+    font-family: 'yekan-medium';
+    src: url('./../assets/fonts/YekanBakh-Medium.woff') format('woff2'),
+         url('./../assets/fonts/YekanBakh-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+  
+  @font-face {
+    font-family: 'yekan-bold';
+    src: url('./../assets/fonts/YekanBakh-Heavy.woff') format('woff2'),
+         url('./../assets/fonts/YekanBakh-Heavy.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+  }
+
+body{
+  height: 10000px;
+}
+*{
+    direction: rtl;
+    font-family: 'yekan-medium';
+    /* font-size: 15px; */
+}
+.yekan-bold {
+  font-family: 'yekan-bold';
+  
+}
+.glass{
+/* From https://css.glass */
+  background: rgba(179, 255, 185, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(179, 255, 185, 0.479);
+  box-shadow: 0 -7px 20px 0px #87878742;
+}
