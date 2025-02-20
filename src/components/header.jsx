@@ -49,16 +49,16 @@ function Header(params) {
         </header>
 
         {/* for mobile */}
-        <header className='w-full fixed bottom-0 p-3 sm:hidden inline glass rounded-t-4xl z-10'>
+        <header className='w-full fixed bottom-0  p-4 sm:hidden inline glass rounded-t-4xl z-20'>
 
-                <ul className='flex justify-between'>
+                <ul className='flex px-4 justify-between'>
                     {
                         header_items_for_mobile.map((item)=>{
                             return(
                                 <>
-                                    <li className='flex flex-col justify-between items-center text-center gap-2  '>
-                                        <img className='w-8' src={item.icon}/>
-                                        <p className='text-xl'>{item.text}</p>
+                                    <li className='flex  flex-col justify-between items-center text-center gap-2  '>
+                                        <img className='w-6' src={item.icon}/>
+                                        <p className='text-md'>{item.text}</p>
                                     </li>
                                 </>
                             );

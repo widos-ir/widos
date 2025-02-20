@@ -18,7 +18,7 @@
   }
 
 body{
-  height: 10000px;
+  /* height: 10000px; */
 }
 *{
     direction: rtl;
@@ -31,10 +31,9 @@ body{
 }
 .glass{
 /* From https://css.glass */
-  background: rgba(179, 255, 185, 0.3);
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  background: rgba(228, 255, 229, 0.3);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  border: 1px solid rgba(179, 255, 185, 0.479);
-  box-shadow: 0 -7px 20px 0px #87878742;
+  /* border: 1px solid rgba(179, 255, 185, 0.479); */
+  box-shadow: 0 -7px 20px 0px #0044115b;
 }
