@@ -10,7 +10,6 @@ import Location from './../assets/icons/location.svg';
 import Call from './../assets/icons/call-footer.svg';
 import Adsine from './../assets/icons/@.svg';
 import News_icon from './../assets/icons/directbox-notif.svg'
-import Enter_icon from './../assets/icons/enter-icon.svg'
 
 
 function Footer(params) {
