@@ -1,4 +1,9 @@
 import { useState } from 'react'
+import React, { useRef } from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Navigation } from 'swiper/modules';
+import 'swiper/css/navigation';
+import 'swiper/css'
 import masjed from './assets/images/masjed.png'
 import widos_collection from './assets/images/widos_collection.jpg'
 import rocket from './assets/icons/rocket-launch.svg'
@@ -7,7 +12,40 @@ import arrow_left from './assets/icons/arrow-left.svg'
 import call_green from './assets/icons/call-green.svg'
 import Hand from './assets/images/hand.png'
 import LapTop_icon from './assets/images/laptop.png'
+import left_button from'./assets/icons/left-button-swiper.svg';
+import right_button from'./assets/icons/right-button-swiper.svg';
+import portfolio_image from './assets/images/portfolio.png'
+// import Portfolio from './components/portfolio';
+
+
+function Portfolio(props) {
+console.log(props)
+    return(<>
+      <div className='flex flex-col p-4 gap-3 w-[250px] bg-white border-1 border-[#E1E1E1] rounded-2xl justify-self-center'>
+        <img className='w-full rounded-xl' src={props.image}/>
+        <b className='text-xl'>{props.name}</b>
+        <small>{props.member}</small>
+        <a className=' bg-[#626262] py-2 cursor-pointer text-center rounded-lg text-white'>مشاهده نمونه کار</a>
+
+      </div>
+    
+    </>)
+}
+
 function App() {
+  const swiperRef = useRef(null);
+
+  const goNext = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slideNext();
+    }
+  };
+
+  const goPrev = () => {
+    if (swiperRef.current && swiperRef.current.swiper) {
+      swiperRef.current.swiper.slidePrev();
+    }
+  };
 let our_services = [
   {text:"طراحی وبسایت" , icon:rocket},
   {text:"اپلیکیشن ویندوز" , icon:rocket},
@@ -19,7 +57,13 @@ let services_property = [
     {number:"+500" , subject:"رضایت مشتریان"},
     {number:"+30" , subject:"اعضای ویداس"},
 ];
-console.log(services_property.length)
+let portfolio_data = [
+  {image:portfolio_image,member:"کارفرما: آقای سعید صادقی" , name:"وبسایت ساعت خوش"},
+  {image:portfolio_image,member:"کارفرما: آقای امیر صادقی" , name:"پروژه ویداس"},
+  {image:portfolio_image,member:"کارفرما: آقای سعید صادقی" , name:"وبسایت ساعت خوش"},
+  {image:portfolio_image,member:"کارفرما: آقای حمید صادقی" , name:"پروژه ویداس"},
+  {image:portfolio_image,member:"کارفرما: آقای سعید صادقی" , name:"وبسایت ساعت خوش"},
+];
 
   return (
     <>
@@ -178,7 +222,52 @@ console.log(services_property.length)
 
       </section>
 
+      {/* simple works--------------------------> */}
 
+      <section className='flex md:flex-row flex-col w-full gap-5 justify-between items-center bg-[#F3F3F3] border-2 border-[#A3A3A3] p-5 rounded-2xl mt-20 '>
+        <div className='flex flex-col gap-3 w-full md:items-start items-center'>
+          <b className='text-[#393939] text-3xl yekan-bold'>نمونه‌کارهای ما</b>
+          <small className='text-[#262626]'>خلاقیت ویداس</small>
+          <div className='md:flex hidden gap-2 mb-10'>
+            <button onClick={goPrev} type='button' className='w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={right_button}/></button>
+            <button onClick={goNext} type='button' className='w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={left_button}/></button>
+          </div>
+          <div className='flex md:flex-col w-full justify-center items-center md:gap-3 gap-2'>
+            <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer '>وبسایت</button>
+            <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer '>اپلیکیشن</button>
+            <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:flex hidden justify-center gap-3 '>مشاهده همه <img src={arrow_left}/></button>
+          </div>
+        </div>
+        <div className='md:w-[65vw] w-full'>
+        <div>
+      <Swiper
+        ref={swiperRef}
+        modules={[Navigation]}
+        navigation={{
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        }}
+        spaceBetween={50}
+        slidesPerView={1}
+        breakpoints={{
+          1100:{slidesPerView:3},
+          768:{slidesPerView:2},
+          // 768:{slidesPerView:1},
+        }}
+      >
+        {
+          portfolio_data.map((item)=>{
+            return<SwiperSlide className='w-full flex'><Portfolio image={item.image} name={item.name} member={item.member}/></SwiperSlide>
+          })
+        }
+      </Swiper>
+
+
+      </div>
+      <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:hidden flex mt-3 justify-center gap-3 '>مشاهده همه <img src={arrow_left}/></button>
+
+        </div>
+      </section>
 
 
       {/* جزئیات شما را خاص می‌کند-------------->*/}
