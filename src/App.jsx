@@ -75,7 +75,7 @@ let portfolio_data = [
           
           {/* our services for mobile */}
           <div className=' md:hidden gap-[1vw] gap-y-4 grid grid-cols-2'>
-            <p className=' text-stone-800 yekan-bold text-4xl'>خدمات ما</p>
+            <p className=' text-stone-800 text-4xl'>خدمات ما</p>
                 {
                   our_services.map((item)=>{
                     return(
@@ -92,7 +92,7 @@ let portfolio_data = [
           {/* our services for desktop */}
           </div>
           <div className='md:flex md:flex-col gap-6 hidden'>
-            <p className=' text-stone-800 yekan-bold text-4xl'>خدمات ما</p>
+            <p className=' text-stone-800 !font-bold text-4xl'>خدمات ما</p>
             <div className='flex gap-3'>
                 {
                   our_services.map((item)=>{
