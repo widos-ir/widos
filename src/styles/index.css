@@ -1,35 +1,98 @@
 @import "tailwindcss";
 
-
+@theme {
+  --font-medium: 'medium';
+  --font-black: 'black';
+  --font-bold: 'bold';
+  --font-x-black: 'x-black';
+  --font-x-bold: 'x-bold';
+  --font-light: 'light';
+  --font-regular: 'regular';
+  --font-semibold: 'semibold';
+  --font-thin: 'thin';
+  --breakpoint-3xl: 1920px;
+  --color-avocado-100: oklch(0.99 0 0);
+  --color-avocado-200: oklch(0.98 0.04 113.22);
+  --color-avocado-300: oklch(0.94 0.11 115.03);
+  --color-avocado-400: oklch(0.92 0.19 114.08);
+  --color-avocado-500: oklch(0.84 0.18 117.33);
+  --color-avocado-600: oklch(0.53 0.12 118.34);
+  --ease-fluid: cubic-bezier(0.3, 0, 0, 1);
+  --ease-snappy: cubic-bezier(0.2, 0, 0, 1);
+  /* ... */
+}
 @font-face {
-    font-family: 'yekan-medium';
-    src: url('./../assets/fonts/YekanBakh-Medium.woff') format('woff2'),
-         url('./../assets/fonts/YekanBakh-Medium.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
-  
-  @font-face {
-    font-family: 'yekan-bold';
-    src: url('./../assets/fonts/YekanBakh-Heavy.woff') format('woff2'),
-         url('./../assets/fonts/YekanBakh-Heavy.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-  }
+  font-family: 'medium';
+  src: url('./../assets/fonts/YekanBakh-Medium.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'black';
+  src: url('./../assets/fonts/YekanBakh-Black.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'bold';
+  src: url('./../assets/fonts/YekanBakh-Bold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'x-black';
+  src: url('./../assets/fonts/YekanBakh-ExtraBlack.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'x-bold';
+  src: url('./../assets/fonts/YekanBakh-ExtraBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'light';
+  src: url('./../assets/fonts/YekanBakh-Light.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'regular';
+  src: url('./../assets/fonts/YekanBakh-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'semibold';
+  src: url('./../assets/fonts/YekanBakh-SemiBold.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'thin';
+  src: url('./../assets/fonts/YekanBakh-Thin.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
 
-body{
+
+
+
+body,html{
   /* height: 10000px; */
   overflow-x: hidden;
+
 }
 *{
     direction: rtl;
-    font-family: 'yekan-medium';
+    font-family: 'medium';
     /* font-size: 15px; */
 }
-.yekan-bold {
+/* .yekan-bold {
   font-family: 'yekan-bold';
   
-}
+} */
 .glass{
 /* From https://css.glass */
   background: rgba(228, 255, 229, 0.3);
@@ -37,4 +100,27 @@ body{
   -webkit-backdrop-filter: blur(8px);
   /* border: 1px solid rgba(179, 255, 185, 0.479); */
   box-shadow: 0 -7px 20px 0px #0044115b;
+}
+
+::-webkit-scrollbar {
+  height: 8px; /* ارتفاع نوار اسکرول افقی */
+  width: 10px;
+}
+
+/* پس‌زمینه نوار اسکرول */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* رنگ پس‌زمینه */
+  border-radius: 10px; /* گوشه‌های گرد */
+}
+
+/* بخش قابل کشیدن (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #394239; /* رنگ thumb */
+  border-radius: 10px; /* گوشه‌های گرد */
+  
+}
+
+/* حالت hover برای thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* رنگ thumb در حالت hover */
 }
