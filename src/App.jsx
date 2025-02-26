@@ -1,9 +1,10 @@
 import { useState } from 'react'
 import React, { useRef } from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Navigation } from 'swiper/modules';
+import { Navigation,Autoplay } from 'swiper/modules';
 import 'swiper/css/navigation';
-import 'swiper/css'
+import 'swiper/css';
+import See_all_button from './components/see_all';
 import masjed from './assets/images/masjed.png'
 import widos_collection from './assets/images/widos_collection.jpg'
 import rocket from './assets/icons/rocket-launch.svg'
@@ -14,7 +15,12 @@ import Hand from './assets/images/hand.png'
 import LapTop_icon from './assets/images/laptop.png'
 import left_button from'./assets/icons/left-button-swiper.svg';
 import right_button from'./assets/icons/right-button-swiper.svg';
-import portfolio_image from './assets/images/portfolio.png'
+import left_button_2 from'./assets/icons/left-button-swiper-2.svg';
+import right_button_2 from'./assets/icons/right-button-swiper-2.svg';
+import portfolio_image from './assets/images/portfolio.png';
+import Client_image from './assets/images/client.png';
+import member_image from './assets/images/member-image.png';
+import hover_icon from "./assets/icons/hover-icon.png";
 // import Portfolio from './components/portfolio';
 
 
@@ -32,42 +38,100 @@ console.log(props)
     </>)
 }
 
+function Clients(props) {
+    return(
+      <>
+      <div className=' justify-self-center w-full bg-[#F8F8F8] py-3 px-4 border-2 border-[#C3C3C3] flex flex-col gap-5 rounded-2xl'>
+        <div className='flex items-center gap-4'>
+            <img className='rounded-2xl' src={props.image}/>
+            <div>
+                <p className=' !font-x-bold text-xl'>{props.name}</p>
+                <p>{props.job}</p>
+            </div>
+        </div>
+        <p className='text-[#3D3D3D]'>{props.comment}</p>
+      </div>
+      </>
+    );
+}
+
+function Member(props) {
+  return(
+    <>
+      <div className='min-w-[210px] h-[300px] relative  '>
+        <img className='w-full h-full object-cover rounded-2xl' src={props.image}/>
+        <div className=' absolute top-0 right-0 min-w-[210px] h-[300px] bg-[#35AA59] p-3 flex flex-col justify-between opacity-0 active:opacity-80 hover:opacity-80  duration-300 rounded-2xl text-white select-none'>
+          <div className=''>
+              <b className=' text-2xl !font-x-bold'>{props.name}</b>
+              <p className=' !font-light'>{props.duty}</p>
+          </div>
+          <small className=' !font-light'>{props.explanation}</small>
+        </div>
+          <img className='w-8 absolute top-3 left-3 !opacity-60' src={hover_icon} alt="" />
+        {/* <div className='min-w-[210px] h-[300px] bg-[#35AA59] opacity-0 hover:opacity-100 absolute left-0 to-0 z-10  p-3'>
+          <div className=' flex flex-col justify-between'>
+            <b>احمد</b>
+            <p>کارشناس تولیدمحتوا</p>
+          </div>
+          <small>لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است.</small>
+        </div> */}
+      </div>
+    </>
+  )
+}
 function App() {
-  const swiperRef = useRef(null);
+  const swiper_portfolio = useRef(null);
+  const swiper_clients = useRef(null);
 
-  const goNext = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slideNext();
-    }
-  };
+  // const goNext = () => {
+  //   if (swiperRef.current && swiperRef.current.swiper) {
+  //     swiperRef.current.swiper.slideNext();
+  //   }
+  // };
 
-  const goPrev = () => {
-    if (swiperRef.current && swiperRef.current.swiper) {
-      swiperRef.current.swiper.slidePrev();
-    }
-  };
-let our_services = [
-  {text:"طراحی وبسایت" , icon:rocket},
-  {text:"اپلیکیشن ویندوز" , icon:rocket},
-  {text:"اپلیکیشن اندروید" , icon:rocket},
-]
-let services_property = [
-    {number:"3 سال" , subject:"سابقه فعالیت"},
-    {number:"+1000" , subject:"پروژه‌های انجام‌شده"},
-    {number:"+500" , subject:"رضایت مشتریان"},
-    {number:"+30" , subject:"اعضای ویداس"},
-];
-let portfolio_data = [
-  {image:portfolio_image,member:"کارفرما: آقای سعید صادقی" , name:"وبسایت ساعت خوش"},
-  {image:portfolio_image,member:"کارفرما: آقای امیر صادقی" , name:"پروژه ویداس"},
-  {image:portfolio_image,member:"کارفرما: آقای سعید صادقی" , name:"وبسایت ساعت خوش"},
-  {image:portfolio_image,member:"کارفرما: آقای حمید صادقی" , name:"پروژه ویداس"},
-  {image:portfolio_image,member:"کارفرما: آقای سعید صادقی" , name:"وبسایت ساعت خوش"},
-];
+  // const goPrev = () => {
+  //   if (swiperRef.current && swiperRef.current.swiper) {
+  //     swiperRef.current.swiper.slidePrev();
+  //   }
+  // };
+  let our_services = [
+    {text:"طراحی وبسایت" , icon:rocket},
+    {text:"اپلیکیشن ویندوز" , icon:rocket},
+    {text:"اپلیکیشن اندروید" , icon:rocket},
+  ]
+  let services_property = [
+      {number:"3 سال" , subject:"سابقه فعالیت"},
+      {number:"+1000" , subject:"پروژه‌های انجام‌شده"},
+      {number:"+500" , subject:"رضایت مشتریان"},
+      {number:"+30" , subject:"اعضای ویداس"},
+  ];
+  let portfolio_data = [
+    {image:portfolio_image,member:"کارفرما: آقای سعید صادقی" , name:"وبسایت ساعت خوش"},
+    {image:portfolio_image,member:"کارفرما: آقای امیر صادقی" , name:"پروژه ویداس"},
+    {image:portfolio_image,member:"کارفرما: آقای سعید صادقی" , name:"وبسایت ساعت خوش"},
+    {image:portfolio_image,member:"کارفرما: آقای حمید صادقی" , name:"پروژه ویداس"},
+    {image:portfolio_image,member:"کارفرما: آقای سعید صادقی" , name:"وبسایت ساعت خوش"},
+  ];
 
+  let clients_data = [
+      {image:Client_image,name:"محمد نوری",job:"معاونت تبلیغات",comment:"لورم ایپـــــــسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استــــــــــفاده از طراحان گرافیک است."},
+      {image:Client_image,name:"محمد نوری",job:"معاونت تبلیغات",comment:"لورم ایپـــــــسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استــــــــــفاده از طراحان گرافیک است."},
+      {image:Client_image,name:"محمد نوری",job:"معاونت تبلیغات",comment:"لورم ایپـــــــسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استــــــــــفاده از طراحان گرافیک است."},
+      {image:Client_image,name:"محمد نوری",job:"معاونت تبلیغات",comment:"لورم ایپـــــــسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استــــــــــفاده از طراحان گرافیک است."},
+      {image:Client_image,name:"محمد نوری",job:"معاونت تبلیغات",comment:"لورم ایپـــــــسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استــــــــــفاده از طراحان گرافیک است."},
+      {image:Client_image,name:"محمد نوری",job:"معاونت تبلیغات",comment:"لورم ایپـــــــسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استــــــــــفاده از طراحان گرافیک است."},
+      {image:Client_image,name:"محمد نوری",job:"معاونت تبلیغات",comment:"لورم ایپـــــــسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ و با استــــــــــفاده از طراحان گرافیک است."},
+  ];
+
+  let widos_members = [
+    {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
+    {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
+    {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
+    {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
+  ]
   return (
     <>
-      <section className='w-full flex md:flex-row flex-col md:justify-between my-16 relative mt-[150px]'>
+            <section className='w-full flex md:flex-row flex-col md:justify-between my-16 relative mt-[150px]'>
         <div className='md:w-[50vw] w-full flex justify-end flex-col gap-14 md:order-1 order-2'>
           <img className='w-min' src={widos_collection}/>
 
@@ -229,8 +293,8 @@ let portfolio_data = [
           <b className='text-[#393939] text-3xl yekan-bold'>نمونه‌کارهای ما</b>
           <small className='text-[#262626]'>خلاقیت ویداس</small>
           <div className='md:flex hidden gap-2 mb-10'>
-            <button onClick={goPrev} type='button' className='w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={right_button}/></button>
-            <button onClick={goNext} type='button' className='w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={left_button}/></button>
+            <button onClick={()=>swiper_portfolio.current.swiper.slidePrev()} type='button' className='swiper-protfolio-next w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={right_button}/></button>
+            <button onClick={()=>swiper_portfolio.current.swiper.slideNext()} type='button' className='swiper-protfolio-prev w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={left_button}/></button>
           </div>
           <div className='flex md:flex-col w-full justify-center items-center md:gap-3 gap-2'>
             <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer '>وبسایت</button>
@@ -241,11 +305,12 @@ let portfolio_data = [
         <div className='md:w-[65vw] w-full'>
         <div>
       <Swiper
-        ref={swiperRef}
-        modules={[Navigation]}
-        navigation={{
-          nextEl: '.swiper-button-next',
-          prevEl: '.swiper-button-prev',
+        ref={swiper_portfolio}
+        modules={[Navigation ,Autoplay]}
+        autoplay={{
+          
+          delay:4000,
+          
         }}
         spaceBetween={50}
         slidesPerView={1}
@@ -268,8 +333,67 @@ let portfolio_data = [
 
         </div>
       </section>
+      {/* مشتریان ویداس  ----------------------------->*/}
+      <nav className='flex justify-between items-center my-15 '>
+        <div className='flex flex-col gap-4'>
+          <b className=' font-x-bold text-3xl'>مشتریان ویداس</b>
+          <p className=' !font-light'>بعداز سفارش چه حسی داشتند...</p>
+        </div>
+        <See_all_button/>
+      </nav>
+      
+      <div className='relative '>
+        <button id='prev_client' onClick={()=>swiper_clients.current.swiper.slidePrev()} type='button' className='sm:inline hidden cursor-pointer bg-[#797979] absolute right-0 top-1/2 z-5 p-3 rounded-full transform -translate-y-1/2 translate-x-1/2 '>
+            <img className='w-4 h-4' src={right_button_2}/>
+        </button>
+        <button onClick={()=>swiper_clients.current.swiper.slideNext()} id='next-client' type='button' className='sm:inline hidden cursor-pointer bg-[#797979] absolute left-0 top-1/2 z-5 p-3 rounded-full transform -translate-y-1/2 -translate-x-1/2 '>
+            <img className='w-4 h-4' src={left_button_2}/>
+        </button>
+        <div className='w-full'>
+        <Swiper
+          ref={swiper_clients}
+          spaceBetween={50}
+          slidesPerView={1}
+          modules={[Navigation,Autoplay]}
+          breakpoints={{
+            2000:{slidesPerView:3},
+            1100:{slidesPerView:2.5},
+          }}
+          autoplay={{
+            delay:3000
+          }}
+
+        >
+          {
+            clients_data.map((item)=>{
+              return<SwiperSlide className='sm:w-[400px] max-w-[400px] w-full flex '><Clients image={item.image} name={item.name} job={item.job} comment={item.comment}/></SwiperSlide>
+            })
+          }
+        </Swiper>
+        </div>
+        
+      </div>
+
+      {/* اعضای ویداس ------------------------>*/}
+      <nav className='flex justify-between items-center my-15 '>
+        <div className='flex flex-col gap-4'>
+          <b className=' font-x-bold text-3xl'>اعضای ویداس</b>
+          <p className=' !font-light'>با تیم ویداس بیشتر آشنا شوید!</p>
+        </div>
+        <See_all_button/>
+      </nav>
+      <div className='w-full flex gap-5 justify-between overflow-x-auto'>
+        {
+          widos_members.map((item)=>{
+            return <Member name={item.name} image={item.image} explanation={item.explanation} duty={item.duty}/>
+          })
+        }
+      </div>
 
 
+
+
+      
       {/* جزئیات شما را خاص می‌کند-------------->*/}
 
       <nav className='relative w-full md:h-[250px] h-[500px] md:my-40 my-10'>
@@ -286,9 +410,9 @@ let portfolio_data = [
         </section>
 
       </nav>
-      
+    
     </>
   )
 }
-// F8F8F8
+{/* // F8F8F8 */}
 export default App

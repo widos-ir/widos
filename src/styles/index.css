@@ -100,3 +100,26 @@ body{
   /* border: 1px solid rgba(179, 255, 185, 0.479); */
   box-shadow: 0 -7px 20px 0px #0044115b;
 }
+
+::-webkit-scrollbar {
+  height: 8px; /* ارتفاع نوار اسکرول افقی */
+  width: 10px;
+}
+
+/* پس‌زمینه نوار اسکرول */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; /* رنگ پس‌زمینه */
+  border-radius: 10px; /* گوشه‌های گرد */
+}
+
+/* بخش قابل کشیدن (thumb) */
+::-webkit-scrollbar-thumb {
+  background: #394239; /* رنگ thumb */
+  border-radius: 10px; /* گوشه‌های گرد */
+  
+}
+
+/* حالت hover برای thumb */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; /* رنگ thumb در حالت hover */
+}
