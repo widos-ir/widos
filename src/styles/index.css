@@ -79,9 +79,10 @@
 
 
 
-body{
+body,html{
   /* height: 10000px; */
   overflow-x: hidden;
+
 }
 *{
     direction: rtl;

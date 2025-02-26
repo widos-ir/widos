@@ -21,13 +21,15 @@ import portfolio_image from './assets/images/portfolio.png';
 import Client_image from './assets/images/client.png';
 import member_image from './assets/images/member-image.png';
 import hover_icon from "./assets/icons/hover-icon.png";
+import article_image from './assets/images/article-image.png';
+import calendar from './assets/icons/calendar.svg'
 // import Portfolio from './components/portfolio';
 
 
 function Portfolio(props) {
 console.log(props)
     return(<>
-      <div className='flex flex-col p-4 gap-3 w-[250px] bg-white border-1 border-[#E1E1E1] rounded-2xl justify-self-center'>
+      <div className='flex flex-col p-4 gap-3 w-[250px] bg-white border-1 border-[#E1E1E1] rounded-2xl justify-self-center '>
         <img className='w-full rounded-xl' src={props.image}/>
         <b className='text-xl'>{props.name}</b>
         <small>{props.member}</small>
@@ -68,13 +70,41 @@ function Member(props) {
           <small className=' !font-light'>{props.explanation}</small>
         </div>
           <img className='w-8 absolute top-3 left-3 !opacity-60' src={hover_icon} alt="" />
-        {/* <div className='min-w-[210px] h-[300px] bg-[#35AA59] opacity-0 hover:opacity-100 absolute left-0 to-0 z-10  p-3'>
-          <div className=' flex flex-col justify-between'>
-            <b>احمد</b>
-            <p>کارشناس تولیدمحتوا</p>
+
+      </div>
+    </>
+  )
+}
+function Article(props) {
+
+  return(
+    <>
+
+      <div className='md:min-w-[450px] md:max-w-[500px] w-full h-[220px] relative flex bg-[#F8F8F8] rounded-2xl '>
+        
+          <div className='w-[160px] h-full '>
+            <div className='w-[140px] h-[200px] transform -translate-x-[10px] md:-translate-x-[20px] -translate-y-[30px] '>
+            <img className=' rounded-2xl w-full h-full object-cover' src={article_image} alt="" />
+
+            </div>
           </div>
-          <small>لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است.</small>
-        </div> */}
+          <div className='flex flex-col justify-between px-4 md:pt-6 pt-2 pb-2 w-full mr-5 '>
+            <div className='flex flex-col box-border gap-2  '>
+              <b className='!font-bold md:text-xl'>{props.title}</b>
+              <small className='!font-light text-[#3D3D3D]'>{props.description}</small>
+            </div>
+            <div className='flex justify-between absolute w-full bottom-0 right-0 px-4 p-3'>
+              <div className='flex items-center md:gap-3 gap-1'>
+                <img className='w-3' src={calendar} alt="" />
+                <small>{props.date}</small>
+              </div>
+              <button className='flex md:gap-3 gap-1 cursor-pointer' type='button'>
+                <p>ادامه </p>
+                <img src={arrow_left} alt="" />
+              </button>
+
+            </div>
+          </div>
       </div>
     </>
   )
@@ -83,17 +113,6 @@ function App() {
   const swiper_portfolio = useRef(null);
   const swiper_clients = useRef(null);
 
-  // const goNext = () => {
-  //   if (swiperRef.current && swiperRef.current.swiper) {
-  //     swiperRef.current.swiper.slideNext();
-  //   }
-  // };
-
-  // const goPrev = () => {
-  //   if (swiperRef.current && swiperRef.current.swiper) {
-  //     swiperRef.current.swiper.slidePrev();
-  //   }
-  // };
   let our_services = [
     {text:"طراحی وبسایت" , icon:rocket},
     {text:"اپلیکیشن ویندوز" , icon:rocket},
@@ -128,6 +147,11 @@ function App() {
     {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
     {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
     {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
+  ];
+  let articles_data=[
+    {title:"لورم ایپسوم متن نمایشی",date:"1403/02/10",image:{article_image},description:"لورم ایپســـــــوم متن ساختگی با تولید سادگی نامفهـــــوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،"},
+    {title:"لورم ایپسوم متن نمایشی",date:"1403/02/10",image:{article_image},description:"لورم ایپســـــــوم متن ساختگی با تولید سادگی نامفهـــــوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،"},
+    {title:"لورم ایپسوم متن نمایشی",date:"1403/02/10",image:{article_image},description:"لورم ایپســـــــوم متن ساختگی با تولید سادگی نامفهـــــوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،"},
   ]
   return (
     <>
@@ -396,7 +420,7 @@ function App() {
       
       {/* جزئیات شما را خاص می‌کند-------------->*/}
 
-      <nav className='relative w-full md:h-[250px] h-[500px] md:my-40 my-10'>
+      <nav className='relative w-full md:h-[250px] h-[500px] md:my-40 my-10 mb-30'>
         <section className='w-[100vw] md:h-[250px] bg-[#494949] absolute md:-right-26 -right-4 flex md:flex-row flex-col justify-between '>
           <div className='md:w-[50%] flex flex-col gap-5 p-10'>
             <b className='text-[#44C96C] text-3xl'>جزئیات شما را خاص می‌کند!</b>
@@ -410,6 +434,49 @@ function App() {
         </section>
 
       </nav>
+
+      {/* اخرین مقالات -------------------------->*/}
+      <nav className='flex justify-center items-center text-center w-full md:mb-20 '>
+        <div className='flex flex-col gap-4'>
+          <b className=' font-x-bold text-3xl'>آخرین مقالات</b>
+          <p className=' !font-light'>به وبلاگ ویداس حتما سر بزنید..</p>
+        </div>
+      </nav>
+
+      <div className='w-full md:hidden flex'>
+        <Swiper
+        modules={[Autoplay]}
+        spaceBetween={30}
+        autoplay={{
+          delay:5000
+        }}
+        className=' h-[400px] '
+        >
+        {
+          articles_data.map((item)=>{
+            return(
+              <SwiperSlide className='w-full !flex items-center justify-self-center'>
+              <Article title={item.title} image={item.image} date={item.date} description={item.description}/>
+          </SwiperSlide>
+            )
+          })
+        }
+        </Swiper>
+      </div>
+
+      <section className='md:flex hidden gap-5 flex-wrap'>
+        {
+          articles_data.map((item)=>{
+             return(<div className='mt-10'>
+              <Article title={item.title} image={item.image} date={item.date} description={item.description}/>
+             </div>)
+               
+          })
+
+        }
+      </section>
+
+        
     
     </>
   )
