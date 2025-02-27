@@ -24,13 +24,14 @@ import hover_icon from "./assets/icons/hover-icon.png";
 import article_image from './assets/images/article-image.png';
 import calendar from './assets/icons/calendar.svg'
 // import Portfolio from './components/portfolio';
+let alt_for_img = "ویداس widos";
 
 
 function Portfolio(props) {
 console.log(props)
     return(<>
       <div className='flex flex-col p-4 gap-3 w-[250px] bg-white border-1 border-[#E1E1E1] rounded-2xl justify-self-center '>
-        <img className='w-full rounded-xl' src={props.image}/>
+        <img alt={alt_for_img} className='w-full rounded-xl' src={props.image}/>
         <b className='text-xl'>{props.name}</b>
         <small>{props.member}</small>
         <a className=' bg-[#626262] py-2 cursor-pointer text-center rounded-lg text-white'>مشاهده نمونه کار</a>
@@ -45,7 +46,7 @@ function Clients(props) {
       <>
       <div className=' justify-self-center w-full bg-[#F8F8F8] py-3 px-4 border-2 border-[#C3C3C3] flex flex-col gap-5 rounded-2xl'>
         <div className='flex items-center gap-4'>
-            <img className='rounded-2xl' src={props.image}/>
+            <img alt={alt_for_img} className='rounded-2xl' src={props.image}/>
             <div>
                 <p className=' !font-x-bold text-xl'>{props.name}</p>
                 <p>{props.job}</p>
@@ -61,7 +62,7 @@ function Member(props) {
   return(
     <>
       <div className='min-w-[210px] h-[300px] relative  '>
-        <img className='w-full h-full object-cover rounded-2xl' src={props.image}/>
+        <img alt={alt_for_img} className='w-full h-full object-cover rounded-2xl' src={props.image}/>
         <div className=' absolute top-0 right-0 min-w-[210px] h-[300px] bg-[#35AA59] p-3 flex flex-col justify-between opacity-0 active:opacity-80 hover:opacity-80  duration-300 rounded-2xl text-white select-none'>
           <div className=''>
               <b className=' text-2xl !font-x-bold'>{props.name}</b>
@@ -69,7 +70,7 @@ function Member(props) {
           </div>
           <small className=' !font-light'>{props.explanation}</small>
         </div>
-          <img className='w-8 absolute top-3 left-3 !opacity-60' src={hover_icon} alt="" />
+          <img alt={alt_for_img} className='w-8 absolute top-3 left-3 !opacity-60' src={hover_icon}  />
 
       </div>
     </>
@@ -84,7 +85,7 @@ function Article(props) {
         
           <div className='w-[160px] h-full '>
             <div className='w-[140px] h-[200px] transform -translate-x-[10px] md:-translate-x-[20px] -translate-y-[30px] '>
-            <img className=' rounded-2xl w-full h-full object-cover' src={article_image} alt="" />
+            <img alt={alt_for_img} className=' rounded-2xl w-full h-full object-cover' src={article_image}  />
 
             </div>
           </div>
@@ -95,12 +96,12 @@ function Article(props) {
             </div>
             <div className='flex justify-between absolute w-full bottom-0 right-0 px-4 p-3'>
               <div className='flex items-center md:gap-3 gap-1'>
-                <img className='w-3' src={calendar} alt="" />
+                <img alt={alt_for_img} className='w-3' src={calendar}  />
                 <small>{props.date}</small>
               </div>
               <button className='flex md:gap-3 gap-1 cursor-pointer' type='button'>
                 <p>ادامه </p>
-                <img src={arrow_left} alt="" />
+                <img alt={alt_for_img} src={arrow_left}  />
               </button>
 
             </div>
@@ -157,7 +158,7 @@ function App() {
     <>
             <section className='w-full flex md:flex-row flex-col md:justify-between my-16 relative mt-[150px]'>
         <div className='md:w-[50vw] w-full flex justify-end flex-col gap-14 md:order-1 order-2'>
-          <img className='w-min' src={widos_collection}/>
+          <img alt={alt_for_img} className='w-min' src={widos_collection}/>
 
           <p className=' stroke-neutral-700'>گروه ویـداس WiDOS به صورت مستقل توسط دانشجـــــــــویان مهنـــــــدسی کامپیوتر دانشگاه اصفهان تاسیس و اداره می‌شود که تضمــــــــین می‌دهد بالاترین کیــفیت نرم افزار و پشتیبانی را تجربه کنید.</p>
           
@@ -169,7 +170,7 @@ function App() {
                     return(
                       <>
                        <div className='flex cursor-pointer transform hover:translate-y-[-2px] hover:shadow-2xl duration-300 gap-[1vw] items-center justify-center w-[15vw] min-w-[160px] max-w-[180px] bg-[#F5F5F5] rounded-xl px-[2vw] py-2 border-2 border-[#E0E0E0]'>
-                        <img src={item.icon}/>
+                        <img alt={alt_for_img} src={item.icon}/>
                         <p>{item.text}</p>
                       </div>
                       </>
@@ -187,7 +188,7 @@ function App() {
                     return(
                       <>
                        <div className='flex cursor-pointer transform hover:translate-y-[-2px] hover:shadow-2xl duration-300 gap-2 items-center justify-center w-[15vw] min-w-[180px] max-w-[180px] bg-[#F5F5F5] rounded-xl px-4 py-2 border-2 border-[#E0E0E0]'>
-                        <img src={item.icon}/>
+                        <img alt={alt_for_img} src={item.icon}/>
                         <p>{item.text}</p>
                       </div>
                       </>
@@ -199,14 +200,14 @@ function App() {
           </div>
         </div>  
         <div className='md:w-[30vw] w-full flex justify-center md:order-2 order-1'>
-           <img className=' ' src={masjed}/>
+           <img alt={alt_for_img} className=' ' src={masjed}/>
         </div>
           
 
 
         {/* absolute item------> */}
         <div className='bg-[#F8F8F8] w-full h-[100px] absolute  bottom-[-150px] flex rounded-b-4xl justify-center items-end'>
-          <img className=' bg-[#F8F8F8] border-[18px]  border-white p-4 rounded-full w-[90px] h-[90px] box-border transform translate-y-1/2   ' src={arrow_down}/>
+          <img alt={alt_for_img} className=' bg-[#F8F8F8] border-[18px]  border-white p-4 rounded-full w-[90px] h-[90px] box-border transform translate-y-1/2   ' src={arrow_down}/>
         </div>
         {/* ---------------- */}
       </section>
@@ -281,11 +282,11 @@ function App() {
               <div className='flex md:flex-row flex-col w-full items-center justify-between gap-10'>
                 <button className=' cursor-pointer border-2 border-[#35a055] bg-[#44C96C] flex md:gap-5 gap-8 text-stone-800 md:w-[50%] w-full py-2 rounded-lg items-center justify-center' type="button">
                   <p>درباره ما</p>
-                  <img className=' bg-[#ffffff70] p-2 rounded-md' src={arrow_left}/>
+                  <img alt={alt_for_img} className=' bg-[#ffffff70] p-2 rounded-md' src={arrow_left}/>
                 </button>
                 <div className='flex gap-4 items-center justify-between w-full h-min text-stone-700'>
                   <a className='flex gap-4 items-center justify-between cursor-pointer' href='tel:+989038862794'>
-                    <img src={call_green}/>
+                    <img alt={alt_for_img} src={call_green}/>
                     <p>مشاوره رایگان</p>
                   </a>
 
@@ -306,7 +307,7 @@ function App() {
         </div>
 
 
-          <img className=' md:w-[30vw] md:order-2 order-1' src={Hand}/>
+          <img alt={alt_for_img} className=' md:w-[30vw] md:order-2 order-1' src={Hand}/>
 
       </section>
 
@@ -317,13 +318,13 @@ function App() {
           <b className='text-[#393939] text-3xl yekan-bold'>نمونه‌کارهای ما</b>
           <small className='text-[#262626]'>خلاقیت ویداس</small>
           <div className='md:flex hidden gap-2 mb-10'>
-            <button onClick={()=>swiper_portfolio.current.swiper.slidePrev()} type='button' className='swiper-protfolio-next w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={right_button}/></button>
-            <button onClick={()=>swiper_portfolio.current.swiper.slideNext()} type='button' className='swiper-protfolio-prev w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={left_button}/></button>
+            <button onClick={()=>swiper_portfolio.current.swiper.slidePrev()} type='button' className='swiper-protfolio-next w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img alt={alt_for_img} src={right_button}/></button>
+            <button onClick={()=>swiper_portfolio.current.swiper.slideNext()} type='button' className='swiper-protfolio-prev w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img alt={alt_for_img} src={left_button}/></button>
           </div>
           <div className='flex md:flex-col w-full justify-center items-center md:gap-3 gap-2'>
             <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer '>وبسایت</button>
             <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer '>اپلیکیشن</button>
-            <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:flex hidden justify-center gap-3 '>مشاهده همه <img src={arrow_left}/></button>
+            <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:flex hidden justify-center gap-3 '>مشاهده همه <img alt={alt_for_img} src={arrow_left}/></button>
           </div>
         </div>
         <div className='md:w-[65vw] w-full'>
@@ -353,7 +354,7 @@ function App() {
 
 
       </div>
-      <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:hidden flex mt-3 justify-center gap-3 '>مشاهده همه <img src={arrow_left}/></button>
+      <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:hidden flex mt-3 justify-center gap-3 '>مشاهده همه <img alt={alt_for_img} src={arrow_left}/></button>
 
         </div>
       </section>
@@ -368,10 +369,10 @@ function App() {
       
       <div className='relative '>
         <button id='prev_client' onClick={()=>swiper_clients.current.swiper.slidePrev()} type='button' className='sm:inline hidden cursor-pointer bg-[#797979] absolute right-0 top-1/2 z-5 p-3 rounded-full transform -translate-y-1/2 translate-x-1/2 '>
-            <img className='w-4 h-4' src={right_button_2}/>
+            <img alt={alt_for_img} className='w-4 h-4' src={right_button_2}/>
         </button>
         <button onClick={()=>swiper_clients.current.swiper.slideNext()} id='next-client' type='button' className='sm:inline hidden cursor-pointer bg-[#797979] absolute left-0 top-1/2 z-5 p-3 rounded-full transform -translate-y-1/2 -translate-x-1/2 '>
-            <img className='w-4 h-4' src={left_button_2}/>
+            <img alt={alt_for_img} className='w-4 h-4' src={left_button_2}/>
         </button>
         <div className='w-full'>
         <Swiper
@@ -427,10 +428,10 @@ function App() {
             <p className='text-white'>ما بر این باوریم که توجه به جزئیـــــــــــــات یک روش برای نشان دادن شما به دیگران نیست بلکه نگرشی است که بسیاری از مشتریان شما در انتخاب خود به دنبال آن هستند</p>
             <button className=' w-[200px] cursor-pointer bg-white flex md:gap-5 gap-8 text-stone-800 py-3 rounded-lg items-center justify-center self-end' type="button">
                   <p>ثبت سفارش</p>
-                  <img className='' src={arrow_left}/>
+                  <img alt={alt_for_img} className='' src={arrow_left}/>
             </button>
           </div>
-          <img className='md:absolute bottom-0 left-30 md:px-0 px-10 md:w-auto w-min self-center' src={LapTop_icon}/>
+          <img alt={alt_for_img} className='md:absolute bottom-0 left-30 md:px-0 px-10 md:w-auto w-min self-center' src={LapTop_icon}/>
         </section>
 
       </nav>

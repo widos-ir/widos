@@ -11,7 +11,7 @@ import Call from './../assets/icons/call-footer.svg';
 import Adsine from './../assets/icons/@.svg';
 import News_icon from './../assets/icons/directbox-notif.svg'
 
-
+let alt_for_img = "ویداس widos";
 function Footer(params) {
     let info=[
         {title:"خدمات" , descriptions: [
@@ -36,8 +36,8 @@ function Footer(params) {
     return(
     <>
         <footer className='md:flex flex-col hidden bg-[#F8F8F8] md:mt-[100px] md:mb-0 pt-20 py-10 px-30 my-[100px] relative'>
-            <img className=' md:inline w-[300px] absolute top-0 right-0' src={bacground_image}/>
-            <img className=' md:inline w-[300px] absolute bottom-0 left-0 transfom' src={bacground_image_2}/>
+            <img alt={alt_for_img} className=' md:inline w-[300px] absolute top-0 right-0' src={bacground_image}/>
+            <img alt={alt_for_img} className=' md:inline w-[300px] absolute bottom-0 left-0 transfom' src={bacground_image_2}/>
             <div className='z-10'>
                 <section className='flex gap-[10vw]'>
                     <div className='md:flex md:flex-col'>
@@ -46,15 +46,15 @@ function Footer(params) {
 
                         <div className='mt-8 flex flex-col gap-8'>
                             <div className='text-[#505050] flex gap-3 items-center'>
-                                <img src={Location}/>
+                                <img alt={alt_for_img} src={Location}/>
                                 <p>محل درج آدرس</p>
                             </div>
                             <div className='text-[#505050] flex gap-3 items-center'>
-                                <img src={Call}/>
+                                <img alt={alt_for_img} src={Call}/>
                                 <p>شماره تماس</p>
                             </div>
                             <div className='text-[#505050] flex gap-3 items-center'>
-                                <img src={Adsine}/>
+                                <img alt={alt_for_img} src={Adsine}/>
                                 <p>exampel@gmail.com</p>
                             </div>
                         </div>
@@ -86,13 +86,13 @@ function Footer(params) {
                     {/* <section className='w-full flex flex-col items-center'>
                         <div className='bg-white  p-4 rounded-2xl'>
                             <div className='flex items-center gap-3 mb-4'>
-                                <img src={News_icon}/>
+                                <img alt={alt_for_img} src={News_icon}/>
                                 <p>خبرنامه ویداس</p>
                             </div>
                             <div className='flex items-center rounded-2xl p-3 bg-[#F6F6F6]'>
                                 <input className='w-[300px]  outline-none' />
                                 <button className=' cursor-pointer'>
-                                    <img src={Enter_icon}/>
+                                    <img alt={alt_for_img} src={Enter_icon}/>
                                 </button>
                             </div>
                         </div>
@@ -116,25 +116,25 @@ function Footer(params) {
         <footer className='md:hidden flex flex-col bg-[#F8F8F8]  p-5  my-[90px] relative'>
 
             {/* backgroud images --------------> */}
-            <img className=' absolute left-1/2 top-0 transform -translate-x-1/2 ' src={bacground_image_mobile}/>
-            <img className=' absolute left-1/2 bottom-0 transform -translate-x-1/2 ' src={bacground_image_mobile_2}/>
+            <img alt={alt_for_img} className=' absolute left-1/2 top-0 transform -translate-x-1/2 ' src={bacground_image_mobile}/>
+            <img alt={alt_for_img} className=' absolute left-1/2 bottom-0 transform -translate-x-1/2 ' src={bacground_image_mobile_2}/>
 
 
 
             <div className='z-10'>
-            <img className='w-[60px]' src={Logo}/>
+            <img alt={alt_for_img} className='w-[60px]' src={Logo}/>
             <p className=' text-[#454444] yekan-bold text-xl'>دیجیتال مارکتینگ ویداس</p>
             <div className='mt-8 flex flex-wrap gap-8'>
                         <div className='text-[#505050] flex gap-3 items-center'>
-                            <img src={Location}/>
+                            <img alt={alt_for_img} src={Location}/>
                             <p>محل درج آدرس</p>
                         </div>
                         <div className='text-[#505050] flex gap-3 items-center'>
-                            <img src={Call}/>
+                            <img alt={alt_for_img} src={Call}/>
                             <p>شماره تماس</p>
                         </div>
                         <div className='text-[#505050] flex gap-3 items-center'>
-                            <img src={Adsine}/>
+                            <img alt={alt_for_img} src={Adsine}/>
                             <p>exampel@gmail.com</p>
                         </div>
                     </div>
