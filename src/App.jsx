@@ -10,6 +10,7 @@ import widos_collection from './assets/images/widos_collection.jpg'
 import rocket from './assets/icons/rocket-launch.svg'
 import arrow_down from './assets/icons/arrow-down.svg'
 import arrow_left from './assets/icons/arrow-left.svg'
+import Call from './assets/icons/call.svg';
 import call_green from './assets/icons/call-green.svg'
 import Hand from './assets/images/hand.png'
 import LapTop_icon from './assets/images/laptop.png'
@@ -25,8 +26,7 @@ import article_image from './assets/images/article-image.png';
 import calendar from './assets/icons/calendar.svg'
 import add_square from "./assets/icons/add-square.svg"
 import minus_square from "./assets/icons/minus-square.svg"
-
-
+import profile from './assets/icons/profile.svg'
 
 // import Portfolio from './components/portfolio';
 let alt_for_img = "ویداس widos";
@@ -314,7 +314,7 @@ function App() {
       {/* ------------------------------> */}
 
 
-      {/* why widos ---------------> */}
+      {/* چرا ویداس؟ ---------------> */}
       <section className='flex md:flex-row md:justify-between flex-col justify-end items-center w-full  mt-16  '>
 
         <div className='flex flex-col gap-4 md:w-[40vw] md:order-1 order-2'>
@@ -356,7 +356,7 @@ function App() {
 
       </section>
 
-      {/* simple works--------------------------> */}
+      {/*نمونه کار ها --------------------------> */}
 
       <section className='flex md:flex-row flex-col w-full gap-5 justify-between items-center bg-[#F3F3F3] border-2 border-[#A3A3A3] p-5 rounded-2xl mt-20 '>
         <div className='flex flex-col gap-3 w-full md:items-start items-center'>
@@ -544,6 +544,30 @@ function App() {
             })
           }
 
+      </section>
+
+      {/* درخواست مشاوره ------------------> */}
+
+      <section className='w-full md:max-w-[70%] border-2 relative bg-white border-[#C2C2C2] rounded-2xl px-6 py-6 m-auto flex md:flex-row flex-col justify-between items-center gap-4 my-20'>
+
+          <div className=' md:inline hidden absolute -z-10 -right-[20px] w-[50px] h-[70px] bg-[#35AA59] rounded-lg'></div>
+
+
+        <div className='flex flex-col gap-2 md:text-start text-center'>
+          <b className=' text-xl !font-bold'>درخواست <span className=' text-[#656565]'>مشاوره</span></b>
+          <small className=' text-gray-800'>در کمتر از 30 دقیقه با شما تماس می‌گیریم.</small>
+        </div>
+        <div className=' md:w-auto w-full flex md:flex-row flex-col gap-3'>
+          <div className='flex justify-between items-center p-3 md:w-[200px] w-full border-2 rounded-xl gap-3  border-[#C2C2C2] '>
+            <img src={profile} alt={alt_for_img} />
+            <input className=' outline-none w-full h-full' type="text" placeholder='نام و نام خانوادگی' />
+          </div>
+          <div className='flex justify-between items-center p-3 md:w-[200px] w-full border-2 rounded-xl gap-3  border-[#C2C2C2] '>
+            <img src={Call} alt={alt_for_img} />
+            <input className=' outline-none w-full h-full' type='tel' placeholder='شماره تماس' />
+          </div>
+        </div>
+        <button className=' bg-[#717171] md:w-auto w-full text-white p-3 rounded-lg text-center cursor-pointer' type="button">درخواست مشاوره </button>
       </section>
     </>
   )
