@@ -4,10 +4,15 @@ import Home from './../assets/icons/home-2.svg'
 import Edit from './../assets/icons/edit.svg'
 import Note from './../assets/icons/note.svg'
 import About_us from './../assets/icons/about-us.svg'
-import Call from './../assets/icons/call.svg'
+import Call from './../assets/icons/call-calling.svg'
 import Book from './../assets/icons/book.svg'
 import Services from './../assets/icons/services-2.svg'
 import Simple_works from './../assets/icons/document-copy.svg'
+
+
+
+let alt_for_img = "ویداس widos";
+
 
 function Header(params) {
     let header_items=[
@@ -32,7 +37,7 @@ function Header(params) {
                     header_items.map((item)=>{
                         return(                     
                            <li className=' hover:bg-[#44c96c] transition  transform hover:shadow-lg cursor-pointer duration-300 flex items-center justify-between gap-1 h-min hover:text-white text-gray-700 p-2 py-1 rounded-3xl text-center'>
-                                <img src={item.icon}/>
+                                <img alt={alt_for_img} src={item.icon}/>
                                 <p className=''>{item.text}</p>
                             </li>
 
@@ -43,7 +48,7 @@ function Header(params) {
 
             </ul>
             <div>
-                <img className='sm:w-[80px] w-[60px]' src={Logo}/>
+                <img alt={alt_for_img} className='sm:w-[80px] w-[60px]' src={Logo}/>
             </div>
 
         </header>
@@ -57,7 +62,7 @@ function Header(params) {
                             return(
                                 <>
                                     <li className='flex  flex-col justify-between items-center text-center gap-2  '>
-                                        <img className='w-6' src={item.icon}/>
+                                        <img alt={alt_for_img} className='w-6' src={item.icon}/>
                                         <p className='text-md'>{item.text}</p>
                                     </li>
                                 </>

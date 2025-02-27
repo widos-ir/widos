@@ -10,6 +10,7 @@ import widos_collection from './assets/images/widos_collection.jpg'
 import rocket from './assets/icons/rocket-launch.svg'
 import arrow_down from './assets/icons/arrow-down.svg'
 import arrow_left from './assets/icons/arrow-left.svg'
+import Call from './assets/icons/call.svg';
 import call_green from './assets/icons/call-green.svg'
 import Hand from './assets/images/hand.png'
 import LapTop_icon from './assets/images/laptop.png'
@@ -20,17 +21,22 @@ import right_button_2 from'./assets/icons/right-button-swiper-2.svg';
 import portfolio_image from './assets/images/portfolio.png';
 import Client_image from './assets/images/client.png';
 import member_image from './assets/images/member-image.png';
-import hover_icon from "./assets/icons/hover-icon.png";
+import hover_icon from "./assets/icons/click-icon.svg";
 import article_image from './assets/images/article-image.png';
 import calendar from './assets/icons/calendar.svg'
+import add_square from "./assets/icons/add-square.svg"
+import minus_square from "./assets/icons/minus-square.svg"
+import profile from './assets/icons/profile.svg'
+
 // import Portfolio from './components/portfolio';
+let alt_for_img = "ویداس widos";
 
 
 function Portfolio(props) {
 console.log(props)
     return(<>
       <div className='flex flex-col p-4 gap-3 w-[250px] bg-white border-1 border-[#E1E1E1] rounded-2xl justify-self-center '>
-        <img className='w-full rounded-xl' src={props.image}/>
+        <img alt={alt_for_img} className='w-full rounded-xl' src={props.image}/>
         <b className='text-xl'>{props.name}</b>
         <small>{props.member}</small>
         <a className=' bg-[#626262] py-2 cursor-pointer text-center rounded-lg text-white'>مشاهده نمونه کار</a>
@@ -45,7 +51,7 @@ function Clients(props) {
       <>
       <div className=' justify-self-center w-full bg-[#F8F8F8] py-3 px-4 border-2 border-[#C3C3C3] flex flex-col gap-5 rounded-2xl'>
         <div className='flex items-center gap-4'>
-            <img className='rounded-2xl' src={props.image}/>
+            <img alt={alt_for_img} className='rounded-2xl' src={props.image}/>
             <div>
                 <p className=' !font-x-bold text-xl'>{props.name}</p>
                 <p>{props.job}</p>
@@ -61,7 +67,7 @@ function Member(props) {
   return(
     <>
       <div className='min-w-[210px] h-[300px] relative  '>
-        <img className='w-full h-full object-cover rounded-2xl' src={props.image}/>
+        <img alt={alt_for_img} className='w-full h-full object-cover rounded-2xl' src={props.image}/>
         <div className=' absolute top-0 right-0 min-w-[210px] h-[300px] bg-[#35AA59] p-3 flex flex-col justify-between opacity-0 active:opacity-80 hover:opacity-80  duration-300 rounded-2xl text-white select-none'>
           <div className=''>
               <b className=' text-2xl !font-x-bold'>{props.name}</b>
@@ -69,7 +75,7 @@ function Member(props) {
           </div>
           <small className=' !font-light'>{props.explanation}</small>
         </div>
-          <img className='w-8 absolute top-3 left-3 !opacity-60' src={hover_icon} alt="" />
+          <img alt={alt_for_img} className='w-8 absolute top-3 left-3 !opacity-60' src={hover_icon}  />
 
       </div>
     </>
@@ -84,7 +90,7 @@ function Article(props) {
         
           <div className='w-[160px] h-full '>
             <div className='w-[140px] h-[200px] transform -translate-x-[10px] md:-translate-x-[20px] -translate-y-[30px] '>
-            <img className=' rounded-2xl w-full h-full object-cover' src={article_image} alt="" />
+            <img alt={alt_for_img} className=' rounded-2xl w-full h-full object-cover' src={article_image}  />
 
             </div>
           </div>
@@ -95,12 +101,12 @@ function Article(props) {
             </div>
             <div className='flex justify-between absolute w-full bottom-0 right-0 px-4 p-3'>
               <div className='flex items-center md:gap-3 gap-1'>
-                <img className='w-3' src={calendar} alt="" />
+                <img alt={alt_for_img} className='w-3' src={calendar}  />
                 <small>{props.date}</small>
               </div>
               <button className='flex md:gap-3 gap-1 cursor-pointer' type='button'>
                 <p>ادامه </p>
-                <img src={arrow_left} alt="" />
+                <img alt={alt_for_img} src={arrow_left}  />
               </button>
 
             </div>
@@ -108,6 +114,37 @@ function Article(props) {
       </div>
     </>
   )
+}
+
+function Acordion(props) {
+  const [answer_status, set_answer_status] = useState("opacity-0 -translate-y-[50%] overflow-hidden max-h-0 p-0");
+  const [bg_icon, set_bg_icon] = useState("bg-[#F0FEF4]");
+  const [icon, set_icon] = useState(add_square);
+
+  function answer_toggle() {
+    if (answer_status.includes("opacity-0")) {
+      set_answer_status("opacity-100 translate-y-0 overflow-hidden max-h-[500px] p-3 my-2");
+    } else {
+      set_answer_status("opacity-0 -translate-y-[50%] overflow-hidden max-h-0 p-0");
+    }
+    icon === add_square ? set_icon(minus_square) : set_icon(add_square);
+    bg_icon === "bg-[#F0FEF4]" ? set_bg_icon("bg-[#ACACAC]") : set_bg_icon("bg-[#F0FEF4]");
+  }
+
+  return (
+    <div className="md:w-[60%] w-full flex flex-col gap-2">
+      <div onClick={answer_toggle} className='w-full flex cursor-pointer select-none justify-between items-center border-2 border-[#C2C2C2] p-3 rounded-2xl z-2 bg-white'>
+        <p>{props.question}</p>
+        <i className={`${bg_icon} p-2 rounded-xl duration-100`}>
+          <img src={icon} alt={alt_for_img} />
+        </i>
+      </div>
+
+      <div className={`w-full border-2 border-dashed border-[#C2C2C2] rounded-2xl transition-all duration-500 ${answer_status}`}>
+        <p className='!font-light'>{props.answer}</p>
+      </div>
+    </div>
+  );
 }
 function App() {
   const swiper_portfolio = useRef(null);
@@ -143,21 +180,30 @@ function App() {
   ];
 
   let widos_members = [
-    {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
-    {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
-    {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
-    {name:"مجتبی مهدوی ",image:member_image ,duty:"آبدارچی",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
+    {name:"اشکان سرانجام",image:member_image ,duty:"گارسون",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
+    {name:"اشکان سرانجام",image:member_image ,duty:"گارسون",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
+    {name:"اشکان سرانجام",image:member_image ,duty:"گارسون",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
+    {name:"اشکان سرانجام",image:member_image ,duty:"گارسون",explanation:"لـــــــورم ایپســــوم متن ساختگی با تولید ســـــــــادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است.. چاپگرها و متــــــون بلکه روزنامه و مجـــله در ستون و سطـــــر آنچنان که لازم است."},
   ];
   let articles_data=[
     {title:"لورم ایپسوم متن نمایشی",date:"1403/02/10",image:{article_image},description:"لورم ایپســـــــوم متن ساختگی با تولید سادگی نامفهـــــوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،"},
     {title:"لورم ایپسوم متن نمایشی",date:"1403/02/10",image:{article_image},description:"لورم ایپســـــــوم متن ساختگی با تولید سادگی نامفهـــــوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،"},
     {title:"لورم ایپسوم متن نمایشی",date:"1403/02/10",image:{article_image},description:"لورم ایپســـــــوم متن ساختگی با تولید سادگی نامفهـــــوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،"},
   ]
+
+  let questions= [
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+  ]
   return (
     <>
             <section className='w-full flex md:flex-row flex-col md:justify-between my-16 relative mt-[150px]'>
         <div className='md:w-[50vw] w-full flex justify-end flex-col gap-14 md:order-1 order-2'>
-          <img className='w-min' src={widos_collection}/>
+          <img alt={alt_for_img} className='w-min' src={widos_collection}/>
 
           <p className=' stroke-neutral-700'>گروه ویـداس WiDOS به صورت مستقل توسط دانشجـــــــــویان مهنـــــــدسی کامپیوتر دانشگاه اصفهان تاسیس و اداره می‌شود که تضمــــــــین می‌دهد بالاترین کیــفیت نرم افزار و پشتیبانی را تجربه کنید.</p>
           
@@ -169,7 +215,7 @@ function App() {
                     return(
                       <>
                        <div className='flex cursor-pointer transform hover:translate-y-[-2px] hover:shadow-2xl duration-300 gap-[1vw] items-center justify-center w-[15vw] min-w-[160px] max-w-[180px] bg-[#F5F5F5] rounded-xl px-[2vw] py-2 border-2 border-[#E0E0E0]'>
-                        <img src={item.icon}/>
+                        <img alt={alt_for_img} src={item.icon}/>
                         <p>{item.text}</p>
                       </div>
                       </>
@@ -187,7 +233,7 @@ function App() {
                     return(
                       <>
                        <div className='flex cursor-pointer transform hover:translate-y-[-2px] hover:shadow-2xl duration-300 gap-2 items-center justify-center w-[15vw] min-w-[180px] max-w-[180px] bg-[#F5F5F5] rounded-xl px-4 py-2 border-2 border-[#E0E0E0]'>
-                        <img src={item.icon}/>
+                        <img alt={alt_for_img} src={item.icon}/>
                         <p>{item.text}</p>
                       </div>
                       </>
@@ -199,14 +245,14 @@ function App() {
           </div>
         </div>  
         <div className='md:w-[30vw] w-full flex justify-center md:order-2 order-1'>
-           <img className=' ' src={masjed}/>
+           <img alt={alt_for_img} className=' ' src={masjed}/>
         </div>
           
 
 
         {/* absolute item------> */}
         <div className='bg-[#F8F8F8] w-full h-[100px] absolute  bottom-[-150px] flex rounded-b-4xl justify-center items-end'>
-          <img className=' bg-[#F8F8F8] border-[18px]  border-white p-4 rounded-full w-[90px] h-[90px] box-border transform translate-y-1/2   ' src={arrow_down}/>
+          <img alt={alt_for_img} className=' bg-[#F8F8F8] border-[18px]  border-white p-4 rounded-full w-[90px] h-[90px] box-border transform translate-y-1/2   ' src={arrow_down}/>
         </div>
         {/* ---------------- */}
       </section>
@@ -268,7 +314,7 @@ function App() {
       {/* ------------------------------> */}
 
 
-      {/* why widos ---------------> */}
+      {/* چرا ویداس؟ ---------------> */}
       <section className='flex md:flex-row md:justify-between flex-col justify-end items-center w-full  mt-16  '>
 
         <div className='flex flex-col gap-4 md:w-[40vw] md:order-1 order-2'>
@@ -281,11 +327,11 @@ function App() {
               <div className='flex md:flex-row flex-col w-full items-center justify-between gap-10'>
                 <button className=' cursor-pointer border-2 border-[#35a055] bg-[#44C96C] flex md:gap-5 gap-8 text-stone-800 md:w-[50%] w-full py-2 rounded-lg items-center justify-center' type="button">
                   <p>درباره ما</p>
-                  <img className=' bg-[#ffffff70] p-2 rounded-md' src={arrow_left}/>
+                  <img alt={alt_for_img} className=' bg-[#ffffff70] p-2 rounded-md' src={arrow_left}/>
                 </button>
                 <div className='flex gap-4 items-center justify-between w-full h-min text-stone-700'>
                   <a className='flex gap-4 items-center justify-between cursor-pointer' href='tel:+989038862794'>
-                    <img src={call_green}/>
+                    <img alt={alt_for_img} src={call_green}/>
                     <p>مشاوره رایگان</p>
                   </a>
 
@@ -306,24 +352,24 @@ function App() {
         </div>
 
 
-          <img className=' md:w-[30vw] md:order-2 order-1' src={Hand}/>
+          <img alt={alt_for_img} className=' md:w-[30vw] md:order-2 order-1' src={Hand}/>
 
       </section>
 
-      {/* simple works--------------------------> */}
+      {/*نمونه کار ها --------------------------> */}
 
       <section className='flex md:flex-row flex-col w-full gap-5 justify-between items-center bg-[#F3F3F3] border-2 border-[#A3A3A3] p-5 rounded-2xl mt-20 '>
         <div className='flex flex-col gap-3 w-full md:items-start items-center'>
           <b className='text-[#393939] text-3xl yekan-bold'>نمونه‌کارهای ما</b>
           <small className='text-[#262626]'>خلاقیت ویداس</small>
           <div className='md:flex hidden gap-2 mb-10'>
-            <button onClick={()=>swiper_portfolio.current.swiper.slidePrev()} type='button' className='swiper-protfolio-next w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={right_button}/></button>
-            <button onClick={()=>swiper_portfolio.current.swiper.slideNext()} type='button' className='swiper-protfolio-prev w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img src={left_button}/></button>
+            <button onClick={()=>swiper_portfolio.current.swiper.slidePrev()} type='button' className='swiper-protfolio-next w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img alt={alt_for_img} src={right_button}/></button>
+            <button onClick={()=>swiper_portfolio.current.swiper.slideNext()} type='button' className='swiper-protfolio-prev w-8 h-8 flex justify-center items-center cursor-pointer duration-100 hover:border-[#35a055] rounded-full border-1 border-[#3F3F3F]'><img alt={alt_for_img} src={left_button}/></button>
           </div>
           <div className='flex md:flex-col w-full justify-center items-center md:gap-3 gap-2'>
             <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer '>وبسایت</button>
             <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer '>اپلیکیشن</button>
-            <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:flex hidden justify-center gap-3 '>مشاهده همه <img src={arrow_left}/></button>
+            <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:flex hidden justify-center gap-3 '>مشاهده همه <img alt={alt_for_img} src={arrow_left}/></button>
           </div>
         </div>
         <div className='md:w-[65vw] w-full'>
@@ -353,7 +399,7 @@ function App() {
 
 
       </div>
-      <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:hidden flex mt-3 justify-center gap-3 '>مشاهده همه <img src={arrow_left}/></button>
+      <button type='button' className='hover:bg-[#44C96C] hover:shadow-2xl w-full bg-white border-2 border-[#9F9F9F] py-2 rounded-lg text-[#4A4A4A] duration-300 cursor-pointer md:hidden flex mt-3 justify-center gap-3 '>مشاهده همه <img alt={alt_for_img} src={arrow_left}/></button>
 
         </div>
       </section>
@@ -368,10 +414,10 @@ function App() {
       
       <div className='relative '>
         <button id='prev_client' onClick={()=>swiper_clients.current.swiper.slidePrev()} type='button' className='sm:inline hidden cursor-pointer bg-[#797979] absolute right-0 top-1/2 z-5 p-3 rounded-full transform -translate-y-1/2 translate-x-1/2 '>
-            <img className='w-4 h-4' src={right_button_2}/>
+            <img alt={alt_for_img} className='w-4 h-4' src={right_button_2}/>
         </button>
         <button onClick={()=>swiper_clients.current.swiper.slideNext()} id='next-client' type='button' className='sm:inline hidden cursor-pointer bg-[#797979] absolute left-0 top-1/2 z-5 p-3 rounded-full transform -translate-y-1/2 -translate-x-1/2 '>
-            <img className='w-4 h-4' src={left_button_2}/>
+            <img alt={alt_for_img} className='w-4 h-4' src={left_button_2}/>
         </button>
         <div className='w-full'>
         <Swiper
@@ -427,10 +473,10 @@ function App() {
             <p className='text-white'>ما بر این باوریم که توجه به جزئیـــــــــــــات یک روش برای نشان دادن شما به دیگران نیست بلکه نگرشی است که بسیاری از مشتریان شما در انتخاب خود به دنبال آن هستند</p>
             <button className=' w-[200px] cursor-pointer bg-white flex md:gap-5 gap-8 text-stone-800 py-3 rounded-lg items-center justify-center self-end' type="button">
                   <p>ثبت سفارش</p>
-                  <img className='' src={arrow_left}/>
+                  <img alt={alt_for_img} className='' src={arrow_left}/>
             </button>
           </div>
-          <img className='md:absolute bottom-0 left-30 md:px-0 px-10 md:w-auto w-min self-center' src={LapTop_icon}/>
+          <img alt={alt_for_img} className='md:absolute bottom-0 left-30 md:px-0 px-10 md:w-auto w-min self-center' src={LapTop_icon}/>
         </section>
 
       </nav>
@@ -475,11 +521,58 @@ function App() {
 
         }
       </section>
+      <div className='w-full md:my-5 flex justify-center items-center '>
+        <See_all_button/>
 
+      </div>
+
+      {/*سوالات متداول  ---------------> */}
+
+      <div className=' w-ful flex flex-col gap-3 text-center my-10'>
+        <h1 className='!font-bold text-2xl'>سوالات متداول </h1>
+        <p>پاسخگـــوی سوالات پرتکــــــــــــرار شـــــــما هستیم.</p>
+        <p>پاسخ سوال خود را پیدا نکردید؟ <span><a className='text-[#35AA59]' href='tel:+989038862794'>ارتباط با پشتیبانی </a></span></p>
+      </div>
         
-    
+      <section className='w-full flex flex-col items-center'>
+
+          {
+            questions.map((item)=>{
+              return (
+                <Acordion answer={item.answer} question={item.question}/>
+              )
+            })
+          }
+
+      </section>
+
+      {/* درخواست مشاوره ------------------> */}
+
+      <section className='w-full md:max-w-[70%] border-2 relative bg-white border-[#C2C2C2] rounded-2xl px-6 py-6 m-auto flex md:flex-row flex-col justify-between items-center gap-4 my-20'>
+
+          <div className=' md:inline hidden absolute -z-10 -right-[20px] w-[50px] h-[70px] bg-[#35AA59] rounded-lg'></div>
+
+
+        <div className='flex flex-col gap-2 md:text-start text-center'>
+          <b className=' text-xl !font-bold'>درخواست <span className=' text-[#656565]'>مشاوره</span></b>
+          <small className=' text-gray-800'>در کمتر از 30 دقیقه با شما تماس می‌گیریم.</small>
+        </div>
+        <div className=' md:w-auto w-full flex md:flex-row flex-col gap-3'>
+          <div className='flex justify-between items-center p-3 md:w-[200px] w-full border-2 rounded-xl gap-3  border-[#C2C2C2] '>
+            <img src={profile} alt={alt_for_img} />
+            <input className=' outline-none w-full h-full' type="text" placeholder='نام و نام خانوادگی' />
+          </div>
+          <div className='flex justify-between items-center p-3 md:w-[200px] w-full border-2 rounded-xl gap-3  border-[#C2C2C2] '>
+            <img src={Call} alt={alt_for_img} />
+            <input className=' outline-none w-full h-full' type='tel' placeholder='شماره تماس' />
+          </div>
+        </div>
+        <button className=' bg-[#717171] md:w-auto w-full text-white p-3 rounded-lg text-center cursor-pointer' type="button">درخواست مشاوره </button>
+      </section>
     </>
   )
+
+
 }
 {/* // F8F8F8 */}
 export default App
