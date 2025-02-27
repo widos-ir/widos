@@ -23,6 +23,11 @@ import member_image from './assets/images/member-image.png';
 import hover_icon from "./assets/icons/hover-icon.png";
 import article_image from './assets/images/article-image.png';
 import calendar from './assets/icons/calendar.svg'
+import add_square from "./assets/icons/add-square.svg"
+import minus_square from "./assets/icons/minus-square.svg"
+
+
+
 // import Portfolio from './components/portfolio';
 let alt_for_img = "ویداس widos";
 
@@ -110,6 +115,37 @@ function Article(props) {
     </>
   )
 }
+
+function Acordion(props) {
+  const [answer_status, set_answer_status] = useState("opacity-0 -translate-y-[50%] overflow-hidden max-h-0 p-0");
+  const [bg_icon, set_bg_icon] = useState("bg-[#F0FEF4]");
+  const [icon, set_icon] = useState(add_square);
+
+  function answer_toggle() {
+    if (answer_status.includes("opacity-0")) {
+      set_answer_status("opacity-100 translate-y-0 overflow-hidden max-h-[500px] p-3 my-2");
+    } else {
+      set_answer_status("opacity-0 -translate-y-[50%] overflow-hidden max-h-0 p-0");
+    }
+    icon === add_square ? set_icon(minus_square) : set_icon(add_square);
+    bg_icon === "bg-[#F0FEF4]" ? set_bg_icon("bg-[#ACACAC]") : set_bg_icon("bg-[#F0FEF4]");
+  }
+
+  return (
+    <div className="md:w-[60%] w-full flex flex-col gap-2">
+      <div onClick={answer_toggle} className='w-full flex cursor-pointer select-none justify-between items-center border-2 border-[#C2C2C2] p-3 rounded-2xl z-2 bg-white'>
+        <p>{props.question}</p>
+        <i className={`${bg_icon} p-2 rounded-xl duration-100`}>
+          <img src={icon} alt={alt_for_img} />
+        </i>
+      </div>
+
+      <div className={`w-full border-2 border-dashed border-[#C2C2C2] rounded-2xl transition-all duration-500 ${answer_status}`}>
+        <p className='!font-light'>{props.answer}</p>
+      </div>
+    </div>
+  );
+}
 function App() {
   const swiper_portfolio = useRef(null);
   const swiper_clients = useRef(null);
@@ -153,6 +189,15 @@ function App() {
     {title:"لورم ایپسوم متن نمایشی",date:"1403/02/10",image:{article_image},description:"لورم ایپســـــــوم متن ساختگی با تولید سادگی نامفهـــــوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،"},
     {title:"لورم ایپسوم متن نمایشی",date:"1403/02/10",image:{article_image},description:"لورم ایپســـــــوم متن ساختگی با تولید سادگی نامفهـــــوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،"},
     {title:"لورم ایپسوم متن نمایشی",date:"1403/02/10",image:{article_image},description:"لورم ایپســـــــوم متن ساختگی با تولید سادگی نامفهـــــوم از صنعت چاپ، و با استفاده از طراحان گرافیک است،"},
+  ]
+
+  let questions= [
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
+    {question:" چه  خدماتی را ارائه می‌دهیم؟" , answer:"لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استــــفاده از طــــراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و سطرآنچنان که لازم است، و برای شـرایط فعلی تکنولوژی مورد نیاز، و کاربردهای متنوع با هدف بهبود ابزارهای کاربردی می باشد." },
   ]
   return (
     <>
@@ -476,11 +521,34 @@ function App() {
 
         }
       </section>
+      <div className='w-full md:my-5 flex justify-center items-center '>
+        <See_all_button/>
 
+      </div>
+
+      {/*سوالات متداول  ---------------> */}
+
+      <div className=' w-ful flex flex-col gap-3 text-center my-10'>
+        <h1 className='!font-bold text-2xl'>سوالات متداول </h1>
+        <p>پاسخگـــوی سوالات پرتکــــــــــــرار شـــــــما هستیم.</p>
+        <p>پاسخ سوال خود را پیدا نکردید؟ <span><a className='text-[#35AA59]' href='tel:+989038862794'>ارتباط با پشتیبانی </a></span></p>
+      </div>
         
-    
+      <section className='w-full flex flex-col items-center'>
+
+          {
+            questions.map((item)=>{
+              return (
+                <Acordion answer={item.answer} question={item.question}/>
+              )
+            })
+          }
+
+      </section>
     </>
   )
+
+
 }
 {/* // F8F8F8 */}
 export default App
