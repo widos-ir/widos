@@ -4,6 +4,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import { Navigation,Autoplay } from 'swiper/modules';
 import 'swiper/css/navigation';
 import 'swiper/css';
+import Isolation_Mode from './assets/images/Isolation_Mode.png'
 import See_all_button from './components/see_all';
 import masjed from './assets/images/masjed.png'
 import widos_collection from './assets/images/widos_collection.jpg'
@@ -40,7 +41,7 @@ console.log(props)
         <b className='text-xl'>{props.name}</b>
         <small>{props.member}</small>
         <a className=' bg-[#626262] py-2 cursor-pointer text-center rounded-lg text-white'>مشاهده نمونه کار</a>
-
+      
       </div>
     
     </>)
@@ -86,7 +87,7 @@ function Article(props) {
   return(
     <>
 
-      <div className='md:min-w-[450px] md:max-w-[500px] w-full h-[220px] relative flex bg-[#F8F8F8] rounded-2xl '>
+      <div className='md:w-[25vw]  md:max-w-[500px] w-full h-[220px] relative flex bg-[#F8F8F8] rounded-2xl '>
         
           <div className='w-[160px] h-full '>
             <div className='w-[140px] h-[200px] transform -translate-x-[10px] md:-translate-x-[20px] -translate-y-[30px] '>
@@ -201,8 +202,10 @@ function App() {
   ]
   return (
     <>
-            <section className='w-full flex md:flex-row flex-col md:justify-between my-16 relative mt-[150px]'>
-        <div className='md:w-[50vw] w-full flex justify-end flex-col gap-14 md:order-1 order-2'>
+       <section className=' my-16 flex-col w-full mt-[150px] gap-4 relative '>
+      <img className=' absolute right-0 ' src={Isolation_Mode} alt={alt_for_img} />
+        <div className='w-full flex md:flex-row flex-col md:justify-between bg-linear-to-t from-[#f8f8f8] to-white md:p-4' >
+        <div className='z-10 md:w-[50vw] w-full flex justify-end flex-col gap-14 md:order-1 order-2'>
           <img alt={alt_for_img} className='w-min' src={widos_collection}/>
 
           <p className=' stroke-neutral-700'>گروه ویـداس WiDOS به صورت مستقل توسط دانشجـــــــــویان مهنـــــــدسی کامپیوتر دانشگاه اصفهان تاسیس و اداره می‌شود که تضمــــــــین می‌دهد بالاترین کیــفیت نرم افزار و پشتیبانی را تجربه کنید.</p>
@@ -247,11 +250,11 @@ function App() {
         <div className='md:w-[30vw] w-full flex justify-center md:order-2 order-1'>
            <img alt={alt_for_img} className=' ' src={masjed}/>
         </div>
-          
+        </div> 
 
 
         {/* absolute item------> */}
-        <div className='bg-[#F8F8F8] w-full h-[100px] absolute  bottom-[-150px] flex rounded-b-4xl justify-center items-end'>
+        <div className='bg-[#F8F8F8] w-full h-[100px] flex  rounded-b-4xl justify-center items-end'>
           <img alt={alt_for_img} className=' bg-[#F8F8F8] border-[18px]  border-white p-4 rounded-full w-[90px] h-[90px] box-border transform translate-y-1/2   ' src={arrow_down}/>
         </div>
         {/* ---------------- */}
@@ -510,7 +513,7 @@ function App() {
         </Swiper>
       </div>
 
-      <section className='md:flex hidden gap-5 flex-wrap'>
+      <section className='md:flex justify-between hidden gap-5 flex-wrap'>
         {
           articles_data.map((item)=>{
              return(<div className='mt-10'>
@@ -521,7 +524,7 @@ function App() {
 
         }
       </section>
-      <div className='w-full md:my-5 flex justify-center items-center '>
+      <div className='w-full md:my-5 flex justify-center items-center p-14 '>
         <See_all_button/>
 
       </div>

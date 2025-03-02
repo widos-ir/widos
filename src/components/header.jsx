@@ -31,7 +31,7 @@ function Header(params) {
     ]
     return(
     <>
-        <header className='flex items-center sm:justify-between justify-end p-2 sm:px-12 px-4 border-[#CDCDCD] border-b-[0.01px] fixed w-full top-0 bg-white z-10'>
+        <header className='flex items-center sm:justify-between justify-end p-2 sm:px-12 px-4 border-[#CDCDCD] border-b-[0.01px] fixed w-full top-0 bg-white z-100'>
             <ul className='sm:flex hidden gap-2 items-center'>
                 {
                     header_items.map((item)=>{
