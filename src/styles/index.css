@@ -11,6 +11,14 @@
   --font-semibold: 'semibold';
   --font-thin: 'thin';
   --breakpoint-3xl: 1920px;
+  --green-300: #39B860;
+  --green-400:#35AA59;
+  --green-50:#F0FEF4;
+  --gray:#3D3D3D;
+  --light-gray-500:#C2C2C2;
+  --light-gray-200:#F5F5F5;
+  --light-gray-100:#F8F8F8;
+
 /* 
 
   --color-light-gray:"#C2C2C2";
